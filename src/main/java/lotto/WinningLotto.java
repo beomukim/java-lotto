@@ -1,30 +1,26 @@
 package lotto;
 
-import java.util.List;
+import java.util.Arrays;
 
-public class WinningLotto {
-    private List<Integer> winningNumber;
-    private Integer bonusNumber;
+public enum WinningLotto {
+    FIRST(6, 2000000000),
+    SECOND(5, 30000000),
+    THIRD(5, 1500000),
+    FOURTH(4, 50000),
+    FIFTH(3, 5000),
+    NOTHING(0, 0);
 
-    public WinningLotto(List<Integer> winningNumber, Integer bonusNumber) {
-        validate(winningNumber);
-        validate(bonusNumber);
-        this.winningNumber = winningNumber;
-        this.bonusNumber = bonusNumber;
-    }
+    private int winningNuberCount;
+    private int winningPrice;
 
-    private void validate(List<Integer> winningNumber) {
-        if (winningNumber.size() != 6) {
-            throw new IllegalArgumentException();
-        }
-        winningNumber.forEach(this::validate);
-    }
-
-    private void validate(Integer lottoNumber) {
-        if (lottoNumber < 1 || lottoNumber > 45) {
-            throw new IllegalArgumentException();
-        }
+    WinningLotto(int winningNuberCount, int winningPrice) {
+        this.winningNuberCount = winningNuberCount;
+        this.winningPrice = winningPrice;
     }
 
 
+
+    public static boolean isNothing(WinningLotto winningLotto) {
+        return winningLotto == WinningLotto.NOTHING;
+    }
 }

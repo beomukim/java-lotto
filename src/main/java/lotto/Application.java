@@ -24,10 +24,5 @@ public class Application {
 
         LottoMachine lottoMachine = new LottoMachine(lottos, winningNumber, bonusNumber);
 
-
-
-
-
-
     }
 }

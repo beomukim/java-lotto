@@ -18,7 +18,20 @@ public enum WinningLotto {
         this.winningPrice = winningPrice;
     }
 
+    public int getWinningNuberCount() {
+        return winningNuberCount;
+    }
 
+    public static WinningLotto from(int winningNuberCount, boolean hasBonus) {
+        if (winningNuberCount == SECOND.winningNuberCount && hasBonus) {
+            return WinningLotto.SECOND;
+        }
+        if (winningNuberCount == THIRD.winningNuberCount && !hasBonus) {
+            return WinningLotto.THIRD;
+        }
+        return Arrays.stream(WinningLotto.values()).filter(item -> item.getWinningNuberCount() == winningNuberCount)
+                .findFirst().orElse(WinningLotto.NOTHING);
+    }
 
     public static boolean isNothing(WinningLotto winningLotto) {
         return winningLotto == WinningLotto.NOTHING;

@@ -1,11 +1,13 @@
 package lotto;
 
 import java.util.List;
+import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
 
         System.out.println("구입금액을 입력해 주세요.");
         int money = inputView.readPrice();
@@ -23,6 +25,7 @@ public class Application {
         Integer bonusNumber = inputView.readBonusNumber();
 
         LottoMachine lottoMachine = new LottoMachine(lottos, winningNumber, bonusNumber);
-
+        Map<WinningLotto, Integer> result = lottoMachine.getResult();
+        outputView.printResult(result);
     }
 }

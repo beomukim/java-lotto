@@ -3,7 +3,9 @@ package lotto;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentMap;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class LottoMachine {
     private List<Lotto> lottos;
@@ -17,18 +19,19 @@ public class LottoMachine {
     }
 
     public Map<WinningLotto, Integer> getResult() {
-        Map<WinningLotto, Integer> result = new HashMap<>();
-
-        return result;
+        return lottos.stream().map(this::checkLotto)
+                .collect(Collectors.toMap(k -> k, v -> 1, Integer::sum));
     }
 
     private WinningLotto checkLotto(Lotto lotto) {
         List<Integer> numbers = lotto.getNumbers();
-        long count = numbers.stream()
+        int count = (int) numbers.stream()
                 .filter(n -> winningNumber.stream().anyMatch(Predicate.isEqual(n)))
                 .count();
+        boolean hasBonus = winningNumber.contains(bonusNumber);
 
-
+        WinningLotto winningLotto = WinningLotto.from(count, hasBonus);
+        return winningLotto;
     }
 
 

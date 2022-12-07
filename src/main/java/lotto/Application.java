@@ -26,6 +26,7 @@ public class Application {
 
         LottoMachine lottoMachine = new LottoMachine(lottos, winningNumber, bonusNumber);
         Map<WinningLotto, Integer> result = lottoMachine.getResult();
+        System.out.println(result);
         outputView.printResult(result);
     }
 }

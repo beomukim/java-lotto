@@ -22,6 +22,10 @@ public enum WinningLotto {
         return winningNuberCount;
     }
 
+    public int getWinningPrice() {
+        return winningPrice;
+    }
+
     public static WinningLotto from(int winningNuberCount, boolean hasBonus) {
         if (winningNuberCount == SECOND.winningNuberCount && hasBonus) {
             return WinningLotto.SECOND;

@@ -3,6 +3,7 @@ package lotto;
 import java.util.Map;
 
 public class OutputView {
+    OutputViewFormatter outputViewFormatter = new OutputViewFormatter();
     public void printResult(Map<WinningLotto, Integer> result) {
         System.out.println("당첨 통계\n");
         System.out.println("---");
@@ -14,6 +15,9 @@ public class OutputView {
          * 6개 일치 (2,000,000,000원) - 0개
          * 총 수익률은 62.5%입니다.
          */
-
+        for (WinningLotto winningLotto : result.keySet()) {
+            String s = outputViewFormatter.outputRankFormat(winningLotto, result.get(winningLotto));
+            System.out.println(s);
+        }
     }
 }

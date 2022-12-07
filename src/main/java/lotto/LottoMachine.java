@@ -1,6 +1,8 @@
 package lotto;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,8 +22,22 @@ public class LottoMachine {
     }
 
     public Map<WinningLotto, Integer> getResult() {
-        return lottos.stream().map(this::checkLotto)
-                .collect(Collectors.toMap(k -> k, v -> 1, Integer::sum));
+        Map<WinningLotto, Integer> result = getWinningLottoIntegerMap();
+        lottos.stream()
+                .map(this::checkLotto)
+                .filter(winningLotto -> winningLotto.getWinningPrice() > 0)
+                .forEach(winningLotto -> result.put(winningLotto, result.get(winningLotto) + 1));
+
+        return result;
+    }
+
+    private static Map<WinningLotto, Integer> getWinningLottoIntegerMap() {
+        Map<WinningLotto, Integer> result = new HashMap<>();
+        Arrays.stream(WinningLotto.values())
+                .filter(winningLotto -> winningLotto.getWinningPrice() > 0)
+                .forEach(winningLotto -> result.put(winningLotto, 0));
+
+        return result;
     }
 
     private WinningLotto checkLotto(Lotto lotto) {

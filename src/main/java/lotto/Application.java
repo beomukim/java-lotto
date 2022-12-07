@@ -26,9 +26,7 @@ public class Application {
             Integer bonusNumber = inputView.readBonusNumber();
 
             LottoMachine lottoMachine = new LottoMachine(lottos, winningNumber, bonusNumber);
-            Map<WinningLotto, Integer> result = lottoMachine.getResult();
-            outputView.printResult(result);
-            outputView.printStatistics(result, money);
+            outputView.printResult(lottoMachine.getResult(), price);
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] ");
         }

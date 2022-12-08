@@ -1,45 +1,49 @@
 package lotto;
 
+import static lotto.ErrorMessage.BONUS_NUMBER_DUPLICATE_ERROR_MESSAGE;
+import static lotto.ErrorMessage.LOTTO_NUMBER_ERROR_MESSAGE;
+import static lotto.ErrorMessage.MONEY_ERROR_MESSAGE;
+import static lotto.ErrorMessage.WINNING_NUMBER_ERROR_MESSAGE;
+import static lotto.Rules.COMMA;
+import static lotto.Rules.LOTTO_COUNT;
+import static lotto.Rules.LOTTO_PRICE;
+import static lotto.Rules.WINNING_NUMBER_END_NUMBER;
+import static lotto.Rules.WINNING_NUMBER_START_NUMBER;
+
 import java.util.Arrays;
 import java.util.Collection;
 
 public class Validator {
 
     private String[] winningNumber;
-    public void validateMoney(String money) {
-        toInteger(money);
-        if (Integer.parseInt(money) % 1000 != 0) {
-            throw new IllegalArgumentException();
-        }
-    }
 
     public void validateWinningNumber(String numbers) {
-        this.winningNumber = numbers.split(",");
+        this.winningNumber = numbers.split(COMMA);
         Arrays.stream(winningNumber).forEach(this::validateLottoNumber);
-        if (Arrays.stream(winningNumber).distinct().count() != 6) {
-            throw new IllegalArgumentException();
+        if (Arrays.stream(winningNumber).distinct().count() != LOTTO_COUNT) {
+            throw new IllegalArgumentException(WINNING_NUMBER_ERROR_MESSAGE);
         }
     }
 
     public void validateBonusNumber(String bonusNumber) {
         validateLottoNumber(bonusNumber);
-        if (Arrays.stream(winningNumber).anyMatch(n -> n.equals(bonusNumber))) {
-            throw new IllegalArgumentException();
+        if (Arrays.asList(winningNumber).contains(bonusNumber)) {
+            throw new IllegalArgumentException(BONUS_NUMBER_DUPLICATE_ERROR_MESSAGE);
         }
     }
-    private Integer toInteger(String number) {
+    public Integer toInteger(String number) {
         try {
             return Integer.valueOf(number);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(LOTTO_NUMBER_ERROR_MESSAGE);
         }
     }
 
     private void validateLottoNumber(String number) {
         toInteger(number);
         int lottoNumber = Integer.parseInt(number);
-        if (lottoNumber < 1 || lottoNumber > 45) {
-            throw new IllegalArgumentException();
+        if (lottoNumber < WINNING_NUMBER_START_NUMBER || lottoNumber > WINNING_NUMBER_END_NUMBER) {
+            throw new IllegalArgumentException(LOTTO_NUMBER_ERROR_MESSAGE);
         }
     }
 }

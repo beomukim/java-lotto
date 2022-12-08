@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.Rules.LOTTO_COUNT;
+
 import java.util.List;
 
 public class Lotto {
@@ -11,7 +13,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.stream().distinct().count() != 6) {
+        if (numbers.stream().distinct().count() != LOTTO_COUNT) {
             throw new IllegalArgumentException();
         }
     }
@@ -19,11 +21,4 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return numbers;
     }
-
-    @Override
-    public String toString() {
-        return numbers.toString();
-    }
-
-    // TODO: 추가 기능 구현
 }

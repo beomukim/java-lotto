@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.Rules.LOTTO_PRICE;
+
 public class Money {
     private int money;
 
@@ -9,7 +11,7 @@ public class Money {
     }
 
     private static void validate(int money) {
-        if (money % 1000 != 0) {
+        if (money % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException();
         }
     }

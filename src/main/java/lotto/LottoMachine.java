@@ -1,14 +1,10 @@
 package lotto;
 
 import java.util.Arrays;
-import java.util.Comparator;
-import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentMap;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class LottoMachine {
     private List<Lotto> lottos;
@@ -37,6 +33,7 @@ public class LottoMachine {
                 .filter(winningLotto -> winningLotto.getWinningPrice() > 0)
                 .forEach(winningLotto -> result.put(winningLotto, 0));
 
+
         return result;
     }
 
@@ -51,5 +48,10 @@ public class LottoMachine {
         return winningLotto;
     }
 
-
+    public double calculateProfit(Map<WinningLotto, Integer> result, Money money) {
+        int sum = result.keySet().stream()
+                .filter(winningLotto -> result.get(winningLotto) > 0).mapToInt(WinningLotto::getWinningPrice).sum();
+        int price = money.getMoney();
+        return (double) sum / price * 100;
+    }
 }

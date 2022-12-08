@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.Rules.COMMA;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
@@ -9,16 +11,17 @@ public class InputView {
     private Validator validator = new Validator();
 
     //TODO : 예외처리
-    public int readPrice() {
+    public Money readPrice() {
         String money = Console.readLine();
-        validator.validateMoney(money);
-        return Integer.parseInt(money);
+        validator.toInteger(money);
+        Money price = new Money(Integer.parseInt(money));
+        return price;
     }
 
     public List<Integer> readWinningNumber() {
         String numbers = Console.readLine();
         validator.validateWinningNumber(numbers);
-        return Arrays.stream(numbers.split(","))
+        return Arrays.stream(numbers.split(COMMA))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }

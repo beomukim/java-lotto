@@ -36,8 +36,4 @@ public enum WinningLotto {
         return Arrays.stream(WinningLotto.values()).filter(item -> item.getWinningNuberCount() == winningNuberCount)
                 .findFirst().orElse(WinningLotto.NOTHING);
     }
-
-    public static boolean isNothing(WinningLotto winningLotto) {
-        return winningLotto == WinningLotto.NOTHING;
-    }
 }

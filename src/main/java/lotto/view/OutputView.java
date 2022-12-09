@@ -16,6 +16,7 @@ public class OutputView {
     public static final String PRICE_MESSAGE = "구입금액을 입력해 주세요.";
     public static final String LOTTO_COUNT_MESSAGE = "개를 구매했습니다.";
     OutputViewFormatter outputViewFormatter = new OutputViewFormatter();
+
     public void printResult(Map<WinningLotto, Integer> result) {
         System.out.println(STASTISTICS);
         System.out.println(SPLIT);

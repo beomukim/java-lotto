@@ -1,6 +1,8 @@
 package lotto;
 
 
+import static lotto.util.ErrorMessage.ERROR_MESSAGE;
+
 import lotto.controller.LottoContoller;
 
 public class Application {
@@ -9,7 +11,7 @@ public class Application {
         try {
             lottoContoller.lottoPlay();
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            System.out.println(ERROR_MESSAGE + e.getMessage());
         }
     }
 }

@@ -42,7 +42,7 @@ public class LottoMachine {
         int count = (int) numbers.stream()
                 .filter(n -> winningNumber.stream().anyMatch(Predicate.isEqual(n)))
                 .count();
-        boolean hasBonus = winningNumber.contains(bonusNumber);
+        boolean hasBonus = numbers.contains(bonusNumber);
 
         WinningLotto winningLotto = WinningLotto.from(count, hasBonus);
         return winningLotto;

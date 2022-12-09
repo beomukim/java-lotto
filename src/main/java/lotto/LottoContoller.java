@@ -31,10 +31,10 @@ public class LottoContoller {
         return lottoMachine;
     }
 
-    private static List<Lotto> makeLottos(Money price) {
+    private List<Lotto> makeLottos(Money price) {
         LottoMaker lottoMaker = new LottoMaker(price);
         List<Lotto> lottos = lottoMaker.makeLotto();
-        lottos.forEach(System.out::println);
+        outputView.printLottos(lottos);
         return lottos;
     }
 

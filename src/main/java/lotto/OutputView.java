@@ -47,4 +47,8 @@ public class OutputView {
     public void suggestPrice() {
         System.out.println(PRICE_MESSAGE);
     }
+
+    public void printLottos(List<Lotto> lottos) {
+        lottos.forEach(lotto -> System.out.println(lotto.getNumbers()));
+    }
 }

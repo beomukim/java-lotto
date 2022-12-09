@@ -13,8 +13,6 @@ import org.junit.jupiter.params.provider.EnumSource.Mode;
 public class LottoMachineTest {
     private LottoMachine lottoMachine;
 
-    private Map<WinningLotto, Integer> result;
-
     @BeforeEach
     void setLottoMachine() {
         Lotto lottos1 = new Lotto(List.of(1, 2, 3, 4, 5, 6));
@@ -29,14 +27,14 @@ public class LottoMachineTest {
     @ParameterizedTest
     @EnumSource(mode = Mode.INCLUDE, names = {"FIRST", "SECOND", "THIRD"})
     void 당첨_로또_판별_테스트(WinningLotto winningLotto) {
-        result = lottoMachine.getResult();
+        Map<WinningLotto, Integer> result = lottoMachine.getResult();
         assertThat(result.keySet()).doesNotContain(WinningLotto.NOTHING);
         assertThat(result.get(winningLotto)).isGreaterThan(0);
     }
 
     @Test
     void 수익률_계산_테스트() {
-        result = lottoMachine.getResult();
+        Map<WinningLotto, Integer> result = lottoMachine.getResult();
         int sum = result.keySet().stream().filter(winningLotto -> result.get(winningLotto) > 0)
                 .mapToInt(WinningLotto::getWinningPrice).sum();
         Money money = new Money(8000);

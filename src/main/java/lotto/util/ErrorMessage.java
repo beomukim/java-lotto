@@ -1,4 +1,4 @@
-package lotto;
+package lotto.util;
 
 public class ErrorMessage {
     public static final String MONEY_ERROR_MESSAGE = "[ERROR] 구입금액은 1000원으로 나누어 떨어져야 합니다.";

@@ -1,6 +1,6 @@
-package lotto;
+package lotto.domain;
 
-import static lotto.Rules.LOTTO_COUNT;
+import static lotto.util.Rules.LOTTO_COUNT;
 
 import java.util.List;
 

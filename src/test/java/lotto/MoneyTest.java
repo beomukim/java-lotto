@@ -1,8 +1,9 @@
 package lotto;
 
-import static lotto.ErrorMessage.MONEY_ERROR_MESSAGE;
+import static lotto.util.ErrorMessage.MONEY_ERROR_MESSAGE;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import lotto.domain.Money;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

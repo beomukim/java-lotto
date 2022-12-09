@@ -1,14 +1,15 @@
 package lotto;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.IntStream;
+import lotto.domain.Lotto;
+import lotto.domain.LottoMaker;
+import lotto.domain.Money;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static lotto.Rules.WINNING_NUMBER_END_NUMBER;
-import static lotto.Rules.WINNING_NUMBER_START_NUMBER;
+import static lotto.util.Rules.WINNING_NUMBER_END_NUMBER;
+import static lotto.util.Rules.WINNING_NUMBER_START_NUMBER;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class LottoMakerTest {

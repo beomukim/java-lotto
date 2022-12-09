@@ -1,7 +1,14 @@
-package lotto;
+package lotto.controller;
 
 import java.util.List;
 import java.util.Map;
+import lotto.domain.Lotto;
+import lotto.domain.LottoMachine;
+import lotto.domain.LottoMaker;
+import lotto.domain.Money;
+import lotto.domain.WinningLotto;
+import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class LottoContoller {
     private InputView inputView = new InputView();

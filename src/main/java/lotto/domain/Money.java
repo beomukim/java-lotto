@@ -1,7 +1,7 @@
-package lotto;
+package lotto.domain;
 
-import static lotto.ErrorMessage.MONEY_ERROR_MESSAGE;
-import static lotto.Rules.LOTTO_PRICE;
+import static lotto.util.ErrorMessage.MONEY_ERROR_MESSAGE;
+import static lotto.util.Rules.LOTTO_PRICE;
 
 public class Money {
     private int money;

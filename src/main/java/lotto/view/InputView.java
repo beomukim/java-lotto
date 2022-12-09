@@ -1,11 +1,13 @@
-package lotto;
+package lotto.view;
 
-import static lotto.Rules.COMMA;
+import static lotto.util.Rules.COMMA;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.util.Validator;
+import lotto.domain.Money;
 
 public class InputView {
     private Validator validator = new Validator();

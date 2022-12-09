@@ -1,6 +1,7 @@
-package lotto;
+package lotto.view;
 
 import java.text.DecimalFormat;
+import lotto.domain.WinningLotto;
 
 public class OutputViewFormatter {
     private static final String MATCH_COUNT_FORMAT = "%s개 일치";

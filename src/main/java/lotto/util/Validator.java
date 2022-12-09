@@ -1,17 +1,14 @@
-package lotto;
+package lotto.util;
 
-import static lotto.ErrorMessage.BONUS_NUMBER_DUPLICATE_ERROR_MESSAGE;
-import static lotto.ErrorMessage.LOTTO_NUMBER_ERROR_MESSAGE;
-import static lotto.ErrorMessage.MONEY_ERROR_MESSAGE;
-import static lotto.ErrorMessage.WINNING_NUMBER_ERROR_MESSAGE;
-import static lotto.Rules.COMMA;
-import static lotto.Rules.LOTTO_COUNT;
-import static lotto.Rules.LOTTO_PRICE;
-import static lotto.Rules.WINNING_NUMBER_END_NUMBER;
-import static lotto.Rules.WINNING_NUMBER_START_NUMBER;
+import static lotto.util.ErrorMessage.BONUS_NUMBER_DUPLICATE_ERROR_MESSAGE;
+import static lotto.util.ErrorMessage.LOTTO_NUMBER_ERROR_MESSAGE;
+import static lotto.util.ErrorMessage.WINNING_NUMBER_ERROR_MESSAGE;
+import static lotto.util.Rules.COMMA;
+import static lotto.util.Rules.LOTTO_COUNT;
+import static lotto.util.Rules.WINNING_NUMBER_END_NUMBER;
+import static lotto.util.Rules.WINNING_NUMBER_START_NUMBER;
 
 import java.util.Arrays;
-import java.util.Collection;
 
 public class Validator {
 

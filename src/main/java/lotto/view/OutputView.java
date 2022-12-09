@@ -1,9 +1,12 @@
-package lotto;
+package lotto.view;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import lotto.domain.Lotto;
+import lotto.domain.Money;
+import lotto.domain.WinningLotto;
 
 public class OutputView {
     public static final String STASTISTICS = "당첨 통계";
